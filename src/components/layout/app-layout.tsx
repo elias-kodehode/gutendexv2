@@ -1,26 +1,29 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Link, Menu } from "lucide-react";
-interface AppLayoutProps {
-  children: React.ReactNode;
-}
+import { Menu } from "lucide-react";
+import { Link, Outlet } from "react-router";
 
-export function AppLayout({ children }: AppLayoutProps) {
+export function AppLayout() {
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-muted/40">
       <header className="flex h-14 shrink-0 items-center justify-between border-b bg-background px-6 shadow-sm">
-        <h1 className="text-lg font-semibold">Gutendex</h1>
+        <h1 className="text-lg font-semibold"><Link to="/">Gutendex</Link></h1>
+        <div className="flex w-lg items-center gap-2">
+        <Input className="w-full" placeholder="Search..." />
+        <Button>Search</Button>
+
+        </div>
         <Dropdown />
       </header>
-      <main className="min-h-0 flex-1 overflow-hidden p-6">{children}</main>
+      <main className="min-h-0 flex-1 overflow-hidden p-6"><Outlet /></main>
     </div>
   );
 }
@@ -39,17 +42,17 @@ const categories = [
   "Tragedy",
   "War",
   "Philosophy",
-];
+] as const;
 
 function Dropdown() {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger render={<Menu />}></DropdownMenuTrigger>
+    <DropdownMenu >
+      <DropdownMenuTrigger render={<Menu />}/>
       <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuLabel>Category</DropdownMenuLabel>
           {categories.map((category) => (
-            <DropdownMenuItem>{category}</DropdownMenuItem>
+            <DropdownMenuItem key={category} onSelect={() => {}}>{category}</DropdownMenuItem>
           ))}
         </DropdownMenuGroup>
       </DropdownMenuContent>
