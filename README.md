@@ -1,5 +1,26 @@
 # React + TypeScript + Vite
 
+## GitHub Pages
+
+In the repository's **Settings → Pages → Build and deployment**, set **Source**
+to **GitHub Actions**. Push to `main`, or run **Deploy to GitHub Pages** manually
+from the Actions tab.
+
+The site deploys to https://elias-kodehode.github.io/gutendexv2/.
+The Pages build uses `/gutendexv2/` for assets and hash routing (for example,
+`/gutendexv2/#/`) so refreshing route links works on static hosting.
+Development and normal builds continue to use browser routing.
+
+To preview the Pages build locally:
+
+```sh
+npm run build:pages
+npm run preview:pages
+```
+
+Open http://localhost:4173/gutendexv2/.
+If the repository is renamed, update the Pages `base` in `vite.config.ts`.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:
